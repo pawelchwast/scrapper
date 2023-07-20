@@ -1,0 +1,2 @@
+class DeletedDomain < ApplicationRecord
+end
