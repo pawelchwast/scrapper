@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every '* 8-9 * * *' do
+every '* 8 * * *' do
   rake "scrapper:deleted_domains"
 end
 
