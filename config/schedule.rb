@@ -19,6 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
+# fix crontabs
+# https://gist.github.com/cre-o/4535005
+
 every '* 8 * * *' do
   rake "scrapper:deleted_domains"
 end
