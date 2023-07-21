@@ -10,24 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_20_070152) do
+ActiveRecord::Schema.define(version: 2023_07_21_071615) do
 
-  create_table "deleted_domains", force: :cascade do |t|
+  create_table "delayed_jobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "deleted_domains", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "fqdn"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ips", force: :cascade do |t|
-    t.integer "search_result_id", null: false
+  create_table "ips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "search_result_id", null: false
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["search_result_id"], name: "index_ips_on_search_result_id"
   end
 
-  create_table "phrases", force: :cascade do |t|
+  create_table "phrases", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "hl"
     t.string "gl"
@@ -37,8 +52,8 @@ ActiveRecord::Schema.define(version: 2023_07_20_070152) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "search_results", force: :cascade do |t|
-    t.integer "phrase_id", null: false
+  create_table "search_results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "phrase_id", null: false
     t.integer "position"
     t.string "source"
     t.text "title"
