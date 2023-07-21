@@ -9,6 +9,6 @@ class PhraseLookupJob < ApplicationJob
   end
 
   def search
-    SerpApiSearch.call(@phrase.id)
+    SerpApiService.call(@phrase)
   end
 end
