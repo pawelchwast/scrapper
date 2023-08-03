@@ -18,4 +18,9 @@ namespace :scrapper do
     end
   end
 
+  desc "Notify matched domains"
+  task match: :environment do
+    MatchService.call
+  end
+
 end
