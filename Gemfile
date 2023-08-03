@@ -50,3 +50,4 @@ gem 'httparty'
 gem 'mysql2'
 gem 'delayed_job_active_record'
 gem 'whenever', require: false
+gem 'twilio-ruby'
