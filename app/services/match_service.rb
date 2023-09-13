@@ -26,7 +26,7 @@ class MatchService
   end
 
   def message
-    @results.map(&:fqdn).join
+    @results.map(&:fqdn).uniq.join(' ')
   end
 
 end
